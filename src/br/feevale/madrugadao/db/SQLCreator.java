@@ -1,0 +1,26 @@
+package br.feevale.madrugadao.db;
+
+public class SQLCreator {
+
+	private final Entidade entidade;
+	private final Filtro filtro;
+	
+	public SQLCreator(Entidade entidade) {
+		this(entidade, new Filtro());
+	}
+	
+	public SQLCreator(Entidade entidade, Filtro filtro) {
+		this.entidade = entidade;
+		this.filtro = filtro;
+	}
+
+	public String create() {
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT * FROM ").append(entidade.getNome());
+		if (filtro.isPossuiFiltro()) {
+			sql.append(" WHERE ").append(filtro.getSql());
+		}
+		return sql.toString();
+	}
+	
+}
