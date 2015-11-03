@@ -2,6 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
+	<classpathentry including="lib/*" kind="src" path="lib"/>
+	<classpathentry excluding="src/|test/|lib/" kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/java-8-openjdk-amd64">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
@@ -19,5 +21,6 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="lib/json.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
