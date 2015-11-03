@@ -1,10 +1,11 @@
 package br.feevale.madrugadao.api;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -26,11 +27,11 @@ public class EntidadeDAO {
 
 	public String busca() throws SQLException {
 		ResultSet resultSet = null;
-		PreparedStatement preparedStatement = null;
+		Statement statement = null;
 		try {
 			JSONArray arr = new JSONArray();
-	        preparedStatement = conn.prepareStatement(sql);
-	        resultSet = preparedStatement.executeQuery();
+	        statement = conn.createStatement();
+	        resultSet = statement.executeQuery(sql);
 	        ResultSetMetaData resultSetMeta = resultSet.getMetaData();
 	        while(resultSet.next()) {
 	        	int numColumns = resultSetMeta.getColumnCount();
@@ -38,13 +39,18 @@ public class EntidadeDAO {
 	            for (int i=1; i<numColumns+1; i++) {
 	            	obj.put(resultSetMeta.getColumnName(i), resultSet.getObject(i));
 	            }
+	            arr.put(obj);
 	        }
-			return arr.toString();
+	        return arr.toString();
 		} catch (SQLException e) {
 			throw e;
 		} finally {
-			resultSet.close();
-			preparedStatement.close();
+			if (resultSet != null) {
+				resultSet.close();
+			}
+			if (statement != null) {
+				statement.close();
+			}
 		}
 	}
 }
