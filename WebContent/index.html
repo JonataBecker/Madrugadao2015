@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Hana Solo</title>
+        <script src="resources/angular/angular.min.js"></script>
+        <script src="resources/jquery/jquery.min.js"></script>
+        <script>
+        	$(function(){
+       			$.get('api/CLIENTE?filtro.campo=id_cliente&filtro.condicao=MAIOR&filtro.valor=1&filtro.campo=FATASIA&filtro.condicao=CONTEM&filtro.valor=BEC', 
+     				function(data){
+       					alert(data);
+      			});
+        	});
+        </script>
+    </head>
+    <body>
+    	<div>
+    		teste
+    	
+    	</div>
+    </body>
+</html>
