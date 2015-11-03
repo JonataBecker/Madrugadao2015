@@ -12,7 +12,7 @@
 		<servlet-name>APIServlet</servlet-name>
 		<url-pattern>/api/*</url-pattern>
 	</servlet-mapping>
-
+	teste
 	<resource-ref>
 		<res-ref-name>jdbc/DefaultDB</res-ref-name>
 		<res-type>javax.sql.DataSource</res-type>
