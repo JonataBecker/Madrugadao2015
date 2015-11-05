@@ -3,7 +3,6 @@ package br.feevale.madrugadao.api;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Map;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
