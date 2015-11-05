@@ -20,6 +20,9 @@ public class SQLCreator {
 		if (filtro.isPossuiFiltro()) {
 			sql.append(" WHERE ").append(filtro.getSql());
 		}
+		if (filtro.isPossuiOrderBy()) {
+			sql.append(" ORDER BY ").append(filtro.getSqlOrder());
+		}
 		return sql.toString();
 	}
 	

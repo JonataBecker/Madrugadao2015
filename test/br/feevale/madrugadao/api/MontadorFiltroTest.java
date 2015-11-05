@@ -33,6 +33,19 @@ public class MontadorFiltroTest {
 	}
 	
 	@Test
+	public void montaFiltroOrderBy() {
+		Map<String, String[]> parameter = new HashMap<>();
+		parameter.put("filtro.campo", new String[]{"idCliente", "razaoSocial", "fantasia"});
+		parameter.put("filtro.condicao", new String[]{"IGUAL", "MAIOR", "MENOR"});
+		parameter.put("filtro.valor", new String[]{"10", "15", "20"});
+		parameter.put("filtro.operador", new String[]{"OR", "AND"});
+		parameter.put("order.campo", new String[]{"idCliente", "fantasia"});
+		parameter.put("order.tipo", new String[]{"ASC", "DESC"});
+		Assert.assertEquals(FiltroFactory.create(parameter).getSqlOrder(), 
+				"idCliente ASC, fantasia DESC");
+	}
+	
+	@Test
 	public void motaFiltroVazio() {
 		Map<String, String[]> parameter = new HashMap<>();
 		Assert.assertEquals(FiltroFactory.create(parameter).getSql(), "");

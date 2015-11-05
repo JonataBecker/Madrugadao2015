@@ -7,8 +7,11 @@ public class Filtro {
 	
 	private final List<FiltroComponent> filtros;	
 
+	private final List<FiltroComponent> orderBy;
+	
 	public Filtro() {
 		this.filtros = new ArrayList<>();
+		this.orderBy = new ArrayList<>();
 	}
 	
 	private int getIndexLast() {
@@ -61,4 +64,22 @@ public class Filtro {
 		return !filtros.isEmpty();
 	}
 	
+	public void addOrderBy(String campo, String ordem) {
+		orderBy.add(new Order(campo, ordem));
+	}
+	
+	public boolean isPossuiOrderBy() {
+		return !orderBy.isEmpty();
+	}
+	
+	public String getSqlOrder() {
+		StringBuilder sb = new StringBuilder();
+		for (FiltroComponent item : orderBy) {
+			if (orderBy.indexOf(item) > 0) {
+				sb.append(", ");
+			}
+			sb.append(item.getSql());
+		}
+		return sb.toString();		
+	}
 }
